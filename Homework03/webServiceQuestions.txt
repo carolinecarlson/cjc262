@@ -1,0 +1,16 @@
+Caroline Carlson
+Team C - Clammin Troop
+
+Answer the following questions with respect to the baseline web service your team built in the lab.
+
+Is the service RESTful? If not, why not? If so, what key features make it RESTful.
+The service is RESTful, which I can tell by looking at the PlayerResource.java file. My first clue was the comment in the file that, "This [PlayerResource] class implements a RESTful service for the player table of the monopoly database." Looking inside the PlayerResource class, it uses HTTP methods explicitly for getPlayer(), getPlayers(), putPlayer, postPlayer, and deletePlayer. In each of these methods, the service is stateless and the player is always represented in a JSON format. The direct structure-like URI is defined in the variable jwksURI. 
+
+What endpoints implement actions that are idempotent? nullipotent?
+Only the players API endpoints are implemented. The endpoint "player" is used in the POST method, which is neither nullipotent nor idempotent. (The state of the database changes when you use POST multiple times). The endpoint "players" is used in the GET method, which is both nullipotent (free of side effects) and idempotent. The endpoints "player/1", "player/2", and "player/3" are used in PUT and DELETE, as well as GET, which are all idempotent (in which the state remains the same whether you do the action one or many times).
+
+What evidence, if any, do you see of the commonly-cited impedance mismatch problem in object-relational information systems?
+The Player.java provides a Player Object class to represent and manipulate player "objects" from the database, which is specified in the PlayerResource.java file and is not object-oriented. A few mismatch problems that I see is the HTTP methods in the PlayerResource.java file make use of Player.setID() but none of the other Player methods. It does not seem that the Player's email address or name cannot be retrieved or changed by the database at all. 
+
+Would the web service built in the lab be susceptible to SQL-injection attacks?
+SQL-injection attacks can be prevented by monitoring user input and using prepared statements. However, when looking through the PlayerResource class, I could not find any prepared statements, nor is the user input double-checked that they are what they should be (ex: making sure the ID is actually an integer). The web service does make use of try-catch blocks and the Statements class, but this is not the same and would allow the web service to still be susceptible to SQL-injection attacks.

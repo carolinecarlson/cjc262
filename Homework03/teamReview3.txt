@@ -1,0 +1,19 @@
+Caroline Carlson
+Stakeholder for Team GG
+
+Do their project management materials show the appropriate amount of activity? 
+
+From the last time I checked their Trello board, they have more cards and hours logged in "Sprint 3: Done" and "Doing," but the amount of activity did not seem enough, nor did the amount of hours seem equal amongst the team members. For instance, the corrections for Sprint 2 are still in the "Doing" list. This past week began Sprint 4, but there's not even a list for "Spring 4: Doing." Joshua in particular has only one hour logged in "Doing" and "Spring 3: Done."
+
+Write a one-to-two-paragraph review of their models. Is their database schema well-formulated? 
+
+The UI model and Domain model (has been updated so the Analytics class is no longer there) are strong, but the user stories could still be improved. The team has fixed some grammatical errors, but they have not made all of the fixes that Professor Vander Linden suggested. For instance, "postpone a schedule" has still not been specified. Also, I'm not sure what the difference is between "activity" and "event." If they are the same thing, the user stories should stick with one or the other to be consistent. Once the team has made these corrections, their models will be where they need to be. Overall, their models are coherent, clear/understandable, and well-formulated.
+
+Has there been an appropriate amount of code pushed into their client and server repos? Can you run the prototype and/or the database?
+
+Based on GitHub and their demo during their presentation, the team has pushed and merged some code, but the demo overall has changed very little from their last demo a few weeks ago. They still do not have anything on their Analytics Activity (even though the database is not expected to run at this point, I at least expected to see the layout of the Analytics Activity, even if the data was fake). One improvement that they made is that I can now run their app on my Android Studio on my computer, which I could not do during their last demo (however, I cannot run their database yet).
+
+Was their design presentation effective? What worked? What didn’t work? How would you rate their presentation relative to the others?
+
+Their design presentation was somewhat effective. What didn't work was a few people just read off the slide and/or went too quickly through the information. What did work was the demo (although as noted above, the demo was not that different from the last time they demo-ed), and allowing different people to present on different slides and information. I could hear and understand the speakers, but they could have showed slightly more energy and enthusiasm. In terms of content and preparation, they were set. Overall, I would rate their presentation lower relative to the other presentations in the class (maybe sixth out of the others), but it was not a bad presentation by any means. 
+
