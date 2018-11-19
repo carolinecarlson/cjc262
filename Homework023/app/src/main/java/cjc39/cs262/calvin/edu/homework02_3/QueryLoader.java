@@ -5,9 +5,18 @@ import android.support.annotation.NonNull;
 import android.support.annotation.Nullable;
 import android.support.v4.content.AsyncTaskLoader;
 
-public class QueryLoader extends AsyncTaskLoader<String> {
+/**
+ * package-private class QueryLoader
+ * extends AsyncTaskLoader
+ * loads and preserves data upon configuration changes.
+ * @author  Caroline Carlson
+ * @version 1.0
+ * @since   2018-18-11
+ */
 
-    String queryString;
+class QueryLoader extends AsyncTaskLoader<String> {
+
+    private String queryString;
 
     public QueryLoader(@NonNull Context context, String str) {
         super(context);

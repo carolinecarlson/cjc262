@@ -9,7 +9,14 @@ import java.io.InputStreamReader;
 import java.net.HttpURLConnection;
 import java.net.URL;
 
-public class NetworkUtils {
+/**
+ * private-package class NetworkUtils
+ * gets player info from the JSON url
+ * @author  Caroline Carlson
+ * @version 1.0
+ * @since   2018-18-11
+ */
+class NetworkUtils {
 
     private static final String LOG_TAG = NetworkUtils.class.getSimpleName();
     private static final String JSON_url = "https://calvincs262-monopoly.appspot.com/monopoly/v1/";
@@ -26,7 +33,7 @@ public class NetworkUtils {
             urlConnection.connect();
 
             InputStream inputStream = urlConnection.getInputStream();
-            StringBuffer buffer = new StringBuffer();
+            StringBuilder buffer = new StringBuilder();
             if (inputStream == null) {
                 // Nothing to do.
                 return null;
@@ -35,7 +42,7 @@ public class NetworkUtils {
             reader = new BufferedReader(new InputStreamReader(inputStream));
             String line;
             while ((line = reader.readLine()) != null) {
-                buffer.append(line + "\n");
+                buffer.append(line).append("\n");
             }
 
             if (buffer.length() == 0) {
@@ -59,7 +66,7 @@ public class NetworkUtils {
                 }
             }
             Log.d(LOG_TAG, bookJSONString);
-            return bookJSONString;
         }
+        return bookJSONString;
     }
 }

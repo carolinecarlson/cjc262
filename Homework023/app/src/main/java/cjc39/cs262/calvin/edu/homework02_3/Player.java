@@ -1,6 +1,13 @@
 package cjc39.cs262.calvin.edu.homework02_3;
 
-public class Player {
+/**
+ * private-package class Player
+ * creates an object-oriented class Player for the Monopoly game
+ * @author  Caroline Carlson
+ * @version 1.0
+ * @since   2018-18-11
+ */
+class Player {
     public int id;
     public String email;
     public String name;

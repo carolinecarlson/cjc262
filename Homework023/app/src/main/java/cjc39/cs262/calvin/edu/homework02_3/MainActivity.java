@@ -4,9 +4,11 @@ import android.content.Context;
 import android.content.Intent;
 import android.net.ConnectivityManager;
 import android.net.NetworkInfo;
+import android.os.Build;
 import android.os.Bundle;
 import android.support.annotation.NonNull;
 import android.support.annotation.Nullable;
+import android.support.annotation.RequiresApi;
 import android.support.v4.app.LoaderManager;
 import android.support.v4.content.Loader;
 import android.support.v7.app.AppCompatActivity;
@@ -22,10 +24,20 @@ import org.json.JSONArray;
 import org.json.JSONException;
 import org.json.JSONObject;
 
+import java.util.Objects;
+
+/**
+ * public class MainActivity
+ * for main menu page
+ * retrieves JSON object based on user input
+ * @author  Caroline Carlson
+ * @version 1.0
+ * @since   2018-18-11
+ */
 public class MainActivity extends AppCompatActivity
         implements LoaderManager.LoaderCallbacks<String> {
 
-    Boolean EmptySearch = true;
+    private Boolean EmptySearch = true;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -59,6 +71,7 @@ public class MainActivity extends AppCompatActivity
         return super.onOptionsItemSelected(item);
     }
 
+    @RequiresApi(api = Build.VERSION_CODES.KITKAT)
     public void onFetchBtnPressed(View view) {
         EditText et = findViewById(R.id.editText);
         String queryString = et.getText().toString();
@@ -76,11 +89,13 @@ public class MainActivity extends AppCompatActivity
 
         InputMethodManager inputManager = (InputMethodManager)
                 getSystemService(Context.INPUT_METHOD_SERVICE);
-        inputManager.hideSoftInputFromWindow(getCurrentFocus().getWindowToken(),
+        assert inputManager != null;
+        inputManager.hideSoftInputFromWindow(Objects.requireNonNull(getCurrentFocus()).getWindowToken(),
                 InputMethodManager.HIDE_NOT_ALWAYS);
 
         ConnectivityManager connMgr = (ConnectivityManager)
                 getSystemService(Context.CONNECTIVITY_SERVICE);
+        if (connMgr == null) throw new AssertionError();
         NetworkInfo networkInfo = connMgr.getActiveNetworkInfo();
 
         if (networkInfo != null && networkInfo.isConnected() ) {
@@ -93,6 +108,7 @@ public class MainActivity extends AppCompatActivity
     @NonNull
     @Override
     public Loader<String> onCreateLoader(int i, @Nullable Bundle bundle) {
+        assert bundle != null;
         return new QueryLoader(this, bundle.getString("queryString"));
     }
 
@@ -136,11 +152,11 @@ public class MainActivity extends AppCompatActivity
         }
 
         ListAdapter adapter = new ListAdapter(this, playersArray);
-        ListView listView = (ListView) findViewById(R.id.listView);
+        ListView listView = findViewById(R.id.listView);
         listView.setAdapter(adapter);
     }
 
-    public void setAttributes(JSONObject player, Player[] playersArray, Integer i) {
+    private void setAttributes(JSONObject player, Player[] playersArray, Integer i) {
         try{
             if( player.has("id") ) {
                 playersArray[i].setId( player.getInt("id") );
