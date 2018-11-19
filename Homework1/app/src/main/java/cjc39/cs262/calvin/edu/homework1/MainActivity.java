@@ -3,16 +3,21 @@ package cjc39.cs262.calvin.edu.homework1;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.view.View;
-import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
 import android.widget.EditText;
 import android.widget.Spinner;
 import android.widget.TextView;
 
+/**
+ * public class MainActivity
+ * extend AppCompatActivity
+ * creates a simple calculator to add, subtract, multiply, and divide two integers
+ * @author  Caroline Carlson
+ * @version 1.0
+ * @since   2018-18-11
+ */
 public class MainActivity extends AppCompatActivity {
 
-    int value1, value2;
-    private Spinner spinner;
     private static final String[] paths = {"+", "-", "*", "/"};
 
     @Override
@@ -20,8 +25,9 @@ public class MainActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
 
-        spinner = (Spinner)findViewById(R.id.spinner2);
-        ArrayAdapter<String> adapter = new ArrayAdapter<String>(MainActivity.this,
+        Spinner spinner;
+        spinner = findViewById(R.id.spinner2);
+        ArrayAdapter<String> adapter = new ArrayAdapter<>(MainActivity.this,
                 android.R.layout.simple_spinner_item,paths);
 
         adapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
@@ -34,6 +40,7 @@ public class MainActivity extends AppCompatActivity {
      * @param view The view that triggers this onClick handler.
      */
     public void onCalculateButtonPressed(View view) {
+        int value1, value2;
         TextView resultsTV = findViewById(R.id.textView6);
         value1 = Integer.valueOf(
                 ((EditText) findViewById(R.id.editText5)).getText().toString());

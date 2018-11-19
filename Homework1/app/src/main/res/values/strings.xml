@@ -4,11 +4,7 @@
     <string name="value_2_text">Value 2:</string>
     <string name="operator_text">Operator:</string>
     <string name="calculate_button_text">Calculate</string>
-    <string-array name="operators">
-        <item>+</item>
-        <item>-</item>
-        <item>*</item>
-        <item>/</item>
-    </string-array>
+    <string name="hint1">Enter first value here</string>
+    <string name="hint2">Enter second value here</string>
 
 </resources>
